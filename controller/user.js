@@ -1,14 +1,15 @@
 import bcrypt from 'bcryptjs';
+import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
-
-import UserModal from '../models/user.js';
+import UserModel from '../models/user.js';
+dotenv.config();
 
 const secret = process.env.ACCESS_TOKEN_SECRET;
 
 export const signup = async (req, res) => {
   const { email, password, firstName, lastName } = req.body;
   try {
-    const oldUser = await UserModal.findOne({ email });
+    const oldUser = await UserModel.findOne({ email });
 
     if (oldUser) {
       return res.status(400).json({ message: 'User already exists' });
@@ -16,7 +17,7 @@ export const signup = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    const result = await UserModal.create({
+    const result = await UserModel.create({
       email,
       password: hashedPassword,
       name: `${firstName} ${lastName}`,

@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
+import userRouter from './routes/user.js';
 dotenv.config();
 
 const port = 5000;
@@ -13,6 +14,9 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
 app.use(cors());
+
+// routes
+app.use('/users', userRouter);
 
 const MONGODB_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.g0uak.mongodb.net/?retryWrites=true&w=majority`;
 
@@ -25,6 +29,7 @@ mongoose
   })
   .catch((err) => console.log(console.log(err)));
 
+// routes
 app.get('/', (req, res) => {
   res.send('track tour server is running');
 });
