@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
+import tourRouter from './routes/tour.js';
 import userRouter from './routes/user.js';
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use(cors());
 
 // routes
 app.use('/users', userRouter);
+app.use('/tour', tourRouter);
 
 const MONGODB_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.g0uak.mongodb.net/?retryWrites=true&w=majority`;
 
