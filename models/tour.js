@@ -17,6 +17,6 @@ const tourSchema = mongoose.Schema({
   },
 });
 
-const TourModal = mongoose.model('Tour', tourSchema);
+const TourModel = mongoose.model('Tour', tourSchema);
 
-export default TourModal;
+export default TourModel;
