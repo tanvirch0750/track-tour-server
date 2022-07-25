@@ -7,7 +7,7 @@ import tourRouter from './routes/tour.js';
 import userRouter from './routes/user.js';
 dotenv.config();
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 const app = express();
 
 // middlewares
