@@ -7,6 +7,7 @@ import {
   deleteTour,
   getTour,
   getTours,
+  getToursBySearch,
   getToursByUser,
   updateTour,
 } from '../controller/tour.js';
@@ -18,4 +19,5 @@ router.delete('/:id', auth, deleteTour);
 router.patch('/:id', auth, updateTour);
 router.get('/userTours/:id', auth, getToursByUser);
 
+router.get('/search', getToursBySearch);
 export default router;
